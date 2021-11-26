@@ -1,1 +1,1 @@
-# Trener-Morseovky
+# Trenér Morseovky
