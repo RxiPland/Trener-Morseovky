@@ -21,4 +21,4 @@ pip install random2
 
 # Ukázka v praxi:
 
-![nahled2](https://i.gyazo.com/a8db5e4eed56af7d4203b18c4122023f.gif)
+![a8db5e4eed56af7d4203b18c4122023f](https://user-images.githubusercontent.com/82058894/143675520-0ff28fb2-c51d-4a05-b5bc-6ce6efaf8a7d.gif)
