@@ -11,7 +11,7 @@ class Ui_MainWindow(QDialog):
         msgBox = QMessageBox()
         msgBox.setIcon(QMessageBox.Question)
         msgBox.setWindowTitle("Nápověda k zapisování")
-        msgBox.setText("Může se hodit, pokud si chcete slovo zaznamenat pro pozdější využití. Slova se budou ukládat do stejného poznámkového bloku, dokud ho nesmažete nebo nepřesunete. Poznámkový blok se bude ukládat jako ulozena_morseovka.txt do stejného umístění jako program tedy:\n\n" + (os.path.dirname(__file__)))
+        msgBox.setText("Může se hodit, pokud si chcete slovo zaznamenat pro pozdější využití. Slova se budou ukládat do stejného poznámkového bloku, dokud ho nesmažete nebo nepřesunete. Poznámkový blok se bude ukládat jako ulozena_morseovka.txt do stejného umístění jako program tedy")
         msgBox.setStandardButtons(QMessageBox.Ok)
         msgBox.exec()
 
