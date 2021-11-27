@@ -1,7 +1,7 @@
 Program je dělaný mnou v pythonu.
 
 ##
-Odkaz pro stažení programu v exe (64bit windows) [stáhnout](https://drive.google.com/drive/)
+Odkaz pro stažení programu v exe (64bit windows) [stáhnout](https://drive.google.com/drive/folders/1nxcTr8DqvpAhoYKTqkKWsOiNOZNd4q4z?usp=sharing)
 ##
 
 # Trenér Morseovky
