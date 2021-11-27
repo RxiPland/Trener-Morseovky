@@ -13,3 +13,7 @@ Program, který z vybraného wordlistu vybere náhodné slovo, přeloží ho do 
 pip install PyQt5
 pip install random2
 ```
+
+# Náhled:
+
+![nahled](https://user-images.githubusercontent.com/82058894/143673281-756ec913-583f-4cc7-a644-2c2553a1cc96.png)
