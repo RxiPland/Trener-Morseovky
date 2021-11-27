@@ -16,4 +16,9 @@ pip install random2
 
 # Náhled:
 
-![nahled](https://user-images.githubusercontent.com/82058894/143673281-756ec913-583f-4cc7-a644-2c2553a1cc96.png)
+![nahled1](https://user-images.githubusercontent.com/82058894/143675420-1941cb47-6b8f-4dd2-9e14-76e6d3b3e972.png)
+
+
+# Ukázka v praxi:
+
+![nahled2](https://user-images.githubusercontent.com/82058894/143675422-3a7a961d-aaf9-4660-97eb-986fbb26f1b4.png)
