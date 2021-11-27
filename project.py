@@ -1,6 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox, QFileDialog, QDialog
-import tr
 import os
 from random import choice
 
@@ -11,8 +10,18 @@ class Ui_MainWindow(QDialog):
 
         msgBox = QMessageBox()
         msgBox.setIcon(QMessageBox.Question)
-        msgBox.setWindowTitle("Nápověda")
-        msgBox.setText("Může se hodit, pokud si chcete slovo zaznamenat pro\npozdější využití. Slova se budou ukládat do stejného\npoznámkového bloku, dokud nevypnete program.")
+        msgBox.setWindowTitle("Nápověda k zapisování")
+        msgBox.setText("Může se hodit, pokud si chcete slovo zaznamenat pro pozdější využití. Slova se budou ukládat do stejného poznámkového bloku, dokud ho nesmažete nebo nepřesunete. Poznámkový blok se bude ukládat jako ulozena_morseovka.txt do stejného umístění jako program tedy:\n\n" + (os.path.dirname(__file__)))
+        msgBox.setStandardButtons(QMessageBox.Ok)
+        msgBox.exec()
+
+
+    def ZobrazitNapovedu2(self):
+
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Question)
+        msgBox.setWindowTitle("Nápověda k wordlistům")
+        msgBox.setText("Program bere z wordlistu náhodná slova a následně je překládá do morseovky.\nBez vybraného wordlistu program nebude vybírat slova.\n\nCo je wordlist?\n\n-Je to textový dokument (.txt) se slovy\n\nJak si můžu vytvořit vlastní wordlist?\n\n-Vytvořte si nový poznámkový blok a do něho zapište jedno slovo nebo i více na každý řádek. (Program bere slova na jednom řádku jako celek, takže je nutno dávat za každým slovem enter, aby přeskočil na další řádek, ale nemusíte pokud chcete, aby to program chápal jako sousloví)")
         msgBox.setStandardButtons(QMessageBox.Ok)
         msgBox.exec()
 
@@ -21,7 +30,18 @@ class Ui_MainWindow(QDialog):
 
         try:
 
-            #zapsat do poznamkoveho bloku
+            global zasifrovano, vylosovane_slovo
+
+            try:
+
+                f = open(r"ulozena_morseovka.txt", "a")
+                f.write(zasifrovano + "      " + vylosovane_slovo + "\n")
+                f.close()
+
+            except:
+                f = open("ulozena_morseovka.txt", mode = "w")
+                f.write(zasifrovano + "      " + vylosovane_slovo + "\n")
+                f.close
             
 
             msgBox = QMessageBox()
@@ -39,6 +59,8 @@ class Ui_MainWindow(QDialog):
             msgBox.setText("Slovo se nepodařilo zapsat!")
             msgBox.setStandardButtons(QMessageBox.Ok)
             msgBox.exec()
+
+
 
     def VybratNovyWordList(self):
 
@@ -60,8 +82,6 @@ class Ui_MainWindow(QDialog):
 
             self.label_4.setText("Aktuální wordlist: " + filename_with_extension)
 
-
-
     def VymazatTabulku2 (self):
 
         self.plainTextEdit_2.setPlainText("")
@@ -72,6 +92,8 @@ class Ui_MainWindow(QDialog):
 
         try:
 
+            self.label_4.setStyleSheet("background-color: ")
+
             with open(cesta_k_word_listu) as file:
                 lines = file.readlines()
                 lines = [line.rstrip() for line in lines]
@@ -80,15 +102,13 @@ class Ui_MainWindow(QDialog):
 
             vylosovane_slovo = vylosovane_slovo.upper()
 
+            self.VymazatTabulku2()
 
             self.ConvertovatDoMorseovky()
 
         except:
 
-            return
-
-        
-
+            self.label_4.setStyleSheet("background-color: red")
 
     def PrelozeneSlovo(self):
 
@@ -105,24 +125,24 @@ class Ui_MainWindow(QDialog):
 
     def ConvertovatDoMorseovky(self):
 
-        global vylosovane_slovo
+        global vylosovane_slovo, zasifrovano
 
         MorsAbeceda = {'A':'.-', 'B':'-...','C':'-.-.', 'D':'-..', 'E':'.','F':'..-.', 'G':'--.', 'H':'....','I':'..', 'J':'.---', 'K':'-.-','L':'.-..', 'M':'--', 'N':'-.','O':'---', 'P':'.--.', 'Q':'--.-','R':'.-.', 'S':'...', 'T':'-','U':'..-', 'V':'...-', 'W':'.--','X':'-..-', 'Y':'-.--', 'Z':'--..','1':'.----', '2':'..---', '3':'...--','4':'....-', '5':'.....', '6':'-....','7':'--...', '8':'---..', '9':'----.','0':'-----'}
 
-        cipher = ''
+        zasifrovano = ''
         
 
         for letter in vylosovane_slovo:
             if letter != ' ':
  
             
-                cipher += ' ' + MorsAbeceda[letter] + '  '
+                zasifrovano += ' ' + MorsAbeceda[letter] + '  '
             else:
                 
-                cipher += ' |  '
+                zasifrovano += ' |  '
 
 
-        self.plainTextEdit.setPlainText(cipher)
+        self.plainTextEdit.setPlainText(zasifrovano)
     
     
     def setupUi(self, MainWindow):
@@ -188,7 +208,6 @@ class Ui_MainWindow(QDialog):
         font.setPointSize(10)
         self.pushButton.setFont(font)
         self.pushButton.setObjectName("pushButton")
-
         self.pushButton.clicked.connect(self.VybratNovyWordList)
 
 
@@ -198,7 +217,6 @@ class Ui_MainWindow(QDialog):
         font.setPointSize(12)
         self.pushButton_2.setFont(font)
         self.pushButton_2.setObjectName("pushButton_2")
-
         self.pushButton_2.clicked.connect(self.Zapsat)
 
 
@@ -208,7 +226,6 @@ class Ui_MainWindow(QDialog):
         font.setPointSize(12)
         self.pushButton_3.setFont(font)
         self.pushButton_3.setObjectName("pushButton_3")
-
         self.pushButton_3.clicked.connect(self.VybratSlovo)
 
 
@@ -228,7 +245,6 @@ class Ui_MainWindow(QDialog):
         font.setPointSize(12)
         self.pushButton_5.setFont(font)
         self.pushButton_5.setObjectName("pushButton_5")
-
         self.pushButton_5.clicked.connect(self.VymazatTabulku2)
 
 
@@ -239,8 +255,16 @@ class Ui_MainWindow(QDialog):
         font.setPointSize(12)
         self.pushButton_6.setFont(font)
         self.pushButton_6.setObjectName("pushButton_6")
-
         self.pushButton_6.clicked.connect(self.PrelozeneSlovo)
+
+
+        self.pushButton_7 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_7.setGeometry(QtCore.QRect(740, 435, 31, 31))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.pushButton_7.setFont(font)
+        self.pushButton_7.setObjectName("pushButton_4")
+        self.pushButton_7.clicked.connect(self.ZobrazitNapovedu2)
 
 
 
@@ -270,6 +294,7 @@ class Ui_MainWindow(QDialog):
         self.pushButton_4.setText(_translate("MainWindow", "?"))
         self.pushButton_5.setText(_translate("MainWindow", "Vymazat"))
         self.pushButton_6.setText(_translate("MainWindow", "Přeložit"))
+        self.pushButton_7.setText(_translate("MainWindow", "?"))
 
 
 if __name__ == "__main__":
