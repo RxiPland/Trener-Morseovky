@@ -1,7 +1,13 @@
 Program je dělaný mnou v pythonu.
 
 ##
-Odkaz pro stažení programu v exe (64bit windows) [stáhnout](https://drive.google.com/drive/folders/1nxcTr8DqvpAhoYKTqkKWsOiNOZNd4q4z?usp=sharing)
+Odkaz pro stažení programu v exe (64bit windows) [stáhnout](https://github.com/RxiPland/Trener-Morseovky/releases/download/v1.0/program.exe)
+<br/>
+<br/>
+`ff957a693fd0d1f034debb5b9d05aed9825bd5a1b1b87cbe237c77ba7752d111` (SHA256)
+<br/>
+<br/>
+Odkaz pro stažení ukázkového wordlistu [stáhnout](https://github.com/RxiPland/Trener-Morseovky/releases/download/v1.0/ukazkovy_word_list.txt)
 ##
 
 # Trenér Morseovky
