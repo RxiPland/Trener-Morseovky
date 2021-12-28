@@ -7,6 +7,7 @@ Odkaz pro stažení programu v exe (64bit windows) [stáhnout](https://github.co
 `ff957a693fd0d1f034debb5b9d05aed9825bd5a1b1b87cbe237c77ba7752d111` (SHA256)
 <br/>
 <br/>
+<br/>
 Odkaz pro stažení ukázkového wordlistu [stáhnout](https://github.com/RxiPland/Trener-Morseovky/releases/download/v1.0/ukazkovy_word_list.txt)
 ##
 
