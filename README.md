@@ -18,7 +18,6 @@ Program, který z vybraného wordlistu vybere náhodné slovo, přeloží ho do 
 # Použité knihovny:
 ```
 pip install PyQt5
-pip install random2
 ```
 
 # Náhled:
