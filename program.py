@@ -1,5 +1,7 @@
 # Udělal RxiPland
 
+# python 3.9.9
+
 # 2021
 
 from PyQt5 import QtCore, QtGui, QtWidgets
